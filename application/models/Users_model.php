@@ -41,11 +41,34 @@ class Users_model extends CI_Model{
     }
     
     
-    public function check_summoner($summonerName, $PassWord) {
+    public function check_summoner($email, $PassWord) {
         
   
-        $query = $this->db->get_where('users', array('username' => $summonerName, 'password' => $PassWord));
-        return $query->row_array();
+        $query = $this->db->get_where('users', array('email' => $email, 'password' => $PassWord));
+        $row = $query->row();
+
+        
+        if (isset($row)){
+            //// yes it is an array :) hurray... return TRUE
+            
+            
+            $userNfo = array(
+                'username' => $row->username,
+                'email'     => $row->email,
+                'nws_login' => TRUE
+                 );
+            
+            
+            $this->session->set_userdata($userNfo);
+      
+           
+            return TRUE;
+        }else{
+
+            return   FALSE;
+        }
+
+        //return $query->row_array();
         
     }
     

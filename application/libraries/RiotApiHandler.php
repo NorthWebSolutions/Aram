@@ -14,7 +14,7 @@ class RiotApiHandler {
         $this->CI = & get_instance();
     }
 
-    public function getSummonerBySummonerName($summonerName) {
+    public function getSummonerIdBySummonerName($summonerName) {
 
 
 
@@ -50,6 +50,16 @@ class RiotApiHandler {
         $url = $this->CI->AC->buildCURL($string, $summonerID);
         $result = $this->CI->AC->getCurl($url);
         return $result;
+    }
+    public function getChampNfoByID($champID) {
+        //   /api/lol/static-data/{region}/v1.2/champion/{id} 
+        //   api/lol/static-data/eune/v1.2/champion/245?api_key=RGAPI-c3556f5c-4cf3-40c8-981d-2815626365f6
+                
+        $string = "/api/lol/static-data/{region}/v1.2/champion/$champID";
+        $url = $this->CI->AC->buildCURL($string,false, "https://global.api.pvp.net/");
+        $result = $this->CI->AC->getCurl($url);
+        return $result;
+        
     }
 
     public function getMacthHistory() {

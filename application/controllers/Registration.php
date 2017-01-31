@@ -27,10 +27,6 @@ class Registration extends CI_Controller {
         $this->load->helper('form');
         $this->load->library(array('Dns' => 'DNS'));
 
-
-
-
-
         $data['title'] = "Registration";
         //$data['crypted_str'] = $this->DNS->crypt_pass('YedQ?!E>E2HLX`NF');
 
@@ -58,16 +54,16 @@ class Registration extends CI_Controller {
 
             //// return becouse something is missing or not good
             Registration::$form_vail_error_bool = TRUE;
-            $this->load->view('registration/index');
+             $data['title'] = "Registration FAIL";
+            $this->load->view('/registration/index', $data);
         }
         else {
+                //// Store USER DATA
+             $this->Users_model->reg_new_summoner();
 
-            $this->Users_model->reg_new_summoner();
-
-
-
-
-            $this->load->view('login/index');
+             ///Set Status_msg
+            $this->session->set_flashdata('msg', 'Registration success!',"true");
+            redirect('Login/index');
         }
     }
 }

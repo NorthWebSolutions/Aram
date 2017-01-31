@@ -5,7 +5,7 @@
         
             </div>
             <div class="panel-footer">
-
+<?php echo base_url(); ?>
             </div>
         </div>
     </div>

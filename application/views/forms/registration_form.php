@@ -22,7 +22,10 @@
                 <input type="password" name="passconf" value="<?php echo set_value('passconf'); ?>" size="50" class="form-control" placeholder="Password Confirm"/>
             </div>
 
-            <div class="h5 text-center"><input type="submit" value="Registration" class="btn btn-success"/></div>
+            <div class="h5 text-center"><input type="submit" value="Registration" class="btn btn-default"/><br><br>
+                
+                <a href="/home" class="small">Back to login</a>
+            </div>
 
             </form>
         </div>
