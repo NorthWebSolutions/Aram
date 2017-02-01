@@ -14,7 +14,7 @@ class ApiConnector {
     
     protected $myAPIkey = "RGAPI-c3556f5c-4cf3-40c8-981d-2815626365f6";
     private $defLocation = "eune";
-    private $locations = array("");
+    private $locations = array("br, eune, euw, jp, kr, lan, las, na, oce, ru, tr");
     
 
     

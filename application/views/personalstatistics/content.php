@@ -73,23 +73,32 @@ $winPercent = round( $winPercent_num , 1, PHP_ROUND_HALF_UP);
     <td><?php echo "$winPercent%";?></td>
   </tr>
   <tr>
-      <td colspan="2" class="text-center">Most win champ </td>
+      <td colspan="2" class="text-center"><h3>Your Top 10 Aram champion</h3> </td>
 
   </tr>
   
-  <?php foreach ($MVC_data as $key => $value) {
+  <?php 
+
+    foreach ($MVC_data as $key => $value) {
       //$this->SF->prh($value);
       $win = $value["win"];
       $lose = $value["lose"];
-      $name = ucfirst($value["nfo"]["name"]);
+      $champ_array = json_decode($value["championArray"]);
+
+      $champName = $champ_array->name;
+      $championArray = $value["championArray"];
       
       
       ?>
       
 
   <tr>
-    <td><?php echo "$name"; ?></td>
-    <td><?php echo "win: $win / Lose: $lose"; ?></td>
+      <td colspan="2" class="h6"><?php  echo "champ_img <br> $champName"; ?></td>
+
+  </tr>
+    <tr>
+    <td><?php  echo "Wins: $win"; ?></td>
+    <td><?php echo "Loses: $lose"; ?></td>
   </tr>
      <?php }?>
   
@@ -142,21 +151,31 @@ $winPercent = round( $winPercent_num , 1, PHP_ROUND_HALF_UP);
 
 
                             $game_isWin = $value["gameIsWin"];
-                            $championID = $value["championArray"]->id;
+                            $championID = $value["champion"];
+                            if($value["championArray"] != Null){
                             $championName = $value["championArray"]->name;
                             $championTitle = $value["championArray"]->title;
-
+                            }
 
                             if ($game_isWin) {
                                 echo "<tr class=\"success\">";
                             } else {
                                 echo "<tr class=\"warning\">";
                             }
-                            echo "<td  class=\"status_color\">&nbsp;</td>
-							<td>$championName <small>$championTitle</small></td>
-							<td> $totalDamageDealt </td>
-							<td> $totalDamageTaken</td>
-							<td> $ipEarned </td>";
+                            echo "<td  class=\"status_color\">&nbsp;</td>";
+                            
+                            
+                            
+                            if($value["championArray"] != Null){
+                                echo "<td>$championName <small>$championTitle</small></td>"; 
+                                
+                            }else{
+                                    echo "<td>$championID</td>"; 
+                                }
+                            
+                            echo "<td> $totalDamageDealt </td>
+                                    <td> $totalDamageTaken</td>
+                                    <td> $ipEarned </td>";
 
                             $i++;
                         }

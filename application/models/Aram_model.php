@@ -15,8 +15,6 @@ class Aram_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-
-        $this->load->database();
     }
 
     public function getAllAramStatForUser($summonerID) {
@@ -41,31 +39,44 @@ class Aram_model extends CI_Model {
             $final_result["$key"]["statsArray"] = json_decode($game->statsArray);
             $final_result["$key"]["fellowPlayers"] = json_decode($game->fellowPlayersArray);
             $final_result["$key"]["gameDate"] = $game->gameDate;
-            
-
-            
-            
         }
         return $final_result;
     }
+
     public function get_Champ_wins_at_aram($summonerID) {
-        
-        $query = $this->db->select('gameIsWin, champion')
-                ->where('summonerID', $summonerID)
-                ->order_by('champion')
-                ->get('aram_data_table');
-        
+
+        $query = $this->db->select('gameIsWin, champion, championArray')
+                  ->where('summonerID', $summonerID)
+
+                  ->get('aram_data_table');
+
         $result = $query->result();
         return $result;
-    
-}
+    }
+
+    public function syncDatabaseWithRecentByList($array) {
 
 
         
 
-    
-    
-    
+        $this->db->insert_batch('aram_data_table', $array);
+    }
+
+    public function checkDatabasesForThisGameId($gameId) {
+
+
+        $query = $this->db->get_where('aram_data_table', array('gameID' => $gameId));
+
+        $result = $query->row();
+
+        if (!$result) {
+            return FALSE;
+        }
+        else {
+            return TRUE;
+        }
+    }
+
     public function checkAndStore($param) {
 
 
@@ -90,17 +101,17 @@ class Aram_model extends CI_Model {
             $result = $query_stored_data->result_array();
 
 
-            
+
             if (!$result) {                                                       //// SO THE DATA not yet in the database, lets store it...
                 $stats = $value['stats'];
                 $champNfo = $value['championNfo'];
                 $fellowPlayers = $value['fellowPlayers'];
-                
-                
+
+
                 $insert_Data = array(
-                    'summonerID' => $summonerID, 
+                    'summonerID' => $summonerID,
                     'summonersTeam' => $value['teamId'],
-                    'gameID' => $gameID, 
+                    'gameID' => $gameID,
                     'gameMode' => $gameType,
                     'gameIsWin' => $value['stats']["win"],
                     'ipEarned' => $value['ipEarned'],
@@ -111,22 +122,19 @@ class Aram_model extends CI_Model {
                     'statsArray' => json_encode($stats),
                     'fellowPlayersArray' => json_encode($fellowPlayers),
                     'championArray' => json_encode($champNfo)
-                    
-                        
-                        );
+                );
 
                 $this->db->insert('aram_data_table', $insert_Data);
-                
-                
-                
-                
-            //} else {                                                              //// Yea this row is STORED in our Database... #DOSOMETHING 
 
+
+
+
+                //} else {                                                              //// Yea this row is STORED in our Database... #DOSOMETHING 
             }
         }
     }
-
 }
+
 /*
             [summoner] => Array
                 (

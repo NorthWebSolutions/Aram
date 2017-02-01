@@ -35,7 +35,7 @@ class Home extends CI_Controller
         //////////// redirects
         //  PLEASE REDIRECT EVERTHYING BELLOW
         //
-        //print_r($_SESSION);
+
         /// if not loged in
         if($this->session->nws_login != TRUE){
             redirect("Login/index");
@@ -50,8 +50,7 @@ class Home extends CI_Controller
             $summ_sm       = strtolower($summonerName);
             $summonerID    = $this->RAH->getSummonerIdBySummonerName($summonerName);          
             
-            //
-            $this->SF->prh($summonerID);
+
             
         if(isset($summonerID["status"]["status_code"]) && $summonerID["status"]["status_code"] == "404"){
             redirect("Profile/changeSummonerName");
@@ -69,7 +68,10 @@ class Home extends CI_Controller
             
             
             $this->session->set_userdata($userNfo);
-        }      
+           
+        } 
+        
+        /// else
          redirect("PersonalStatistics/overview");
         
 //            $data['title'] = "Welcome Summoner";           

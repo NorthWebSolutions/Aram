@@ -72,4 +72,16 @@ class Users_model extends CI_Model{
         
     }
     
+    public function returnOnlyUsernames() {
+        
+        $query = $this->db->select('username')
+                
+                ->order_by('username')
+                ->get('users');
+        
+        $result = $query->result();
+        return $result;
+        
+    }
+    
 }
