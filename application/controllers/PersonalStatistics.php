@@ -40,9 +40,22 @@ class PersonalStatistics extends CI_Controller{
               
               //$this->SF->prh($mvc_data);
 
-       $data["MVC_data"] = $mvc_data;// $mvc_data;
+              $data["MVC_data"] = $mvc_data;// $mvc_data;
+              
+              $totalMach = 0;
+              $winsAllFromDB = 0;
+              $losesAllFromDB = 0;
+              $winPercent = 0;
+              
+              
+              $data["totalMach"] = $totalMach;
+               $data["winsAllFromDB"] = $winsAllFromDB; 
+               $data["losesAllFromDB"] = $losesAllFromDB;
+                $data["winPercent"] = $winPercent;
+               
 
-        $this->load->view('/personalstatistics/content', $data);
+
+              $this->load->view('/personalstatistics/content', $data);
         
         
           }

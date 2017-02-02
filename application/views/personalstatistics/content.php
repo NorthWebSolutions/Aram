@@ -40,79 +40,10 @@ $winPercent = round( $winPercent_num , 1, PHP_ROUND_HALF_UP);
 
 ?>
 <div class="col-md-3">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title text-center">Welcome Summoner</div>
-    </div>
-    <div class="panel-body">
-<table class="table stat_panel">
-<thead>
-    <tr><th colspan="2" class="text-center "><h3><?php echo ucfirst($this->session->username); ?><br />
-<small>Aram stats:</small></h3></th></tr>
-    
-</thead>
-<tbody>
-  <tr>
-    <td colspan="2"><h3>Database statistics:</h3></td>
-
-  </tr>
-  <tr> 
-    <td>Total Mach:</td>
-    <td><?php  echo "$totalMach";?></td>
-  </tr>
-  <tr>
-    <td>Wins:</td>
-    <td><?php echo "$winsAllFromDB";?></td>
-  </tr>
-  <tr>
-    <td>Loses:</td>
-    <td><?php echo "$losesAllFromDB";?></td>
-  </tr>
-  <tr>
-    <td>Win Percent:</td>
-    <td><?php echo "$winPercent%";?></td>
-  </tr>
-  <tr>
-      <td colspan="2" class="text-center"><h3>Your Top 10 Aram champion</h3> </td>
-
-  </tr>
-  
-  <?php 
-
-    foreach ($MVC_data as $key => $value) {
-      //$this->SF->prh($value);
-      $win = $value["win"];
-      $lose = $value["lose"];
-      $champ_array = json_decode($value["championArray"]);
-
-      $champName = $champ_array->name;
-      $championArray = $value["championArray"];
-      
-      
-      ?>
-      
-
-  <tr>
-      <td colspan="2" class="h6"><?php  echo "champ_img <br> $champName"; ?></td>
-
-  </tr>
-    <tr>
-    <td><?php  echo "Wins: $win"; ?></td>
-    <td><?php echo "Loses: $lose"; ?></td>
-  </tr>
-     <?php }?>
-  
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
-</tbody>
-</table>
-
-
-        </div>
-  </div>
+<?php $this->load->view("personalstatistics/left_panel_dock");?>    
 </div>
+
+
 <div class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading">
