@@ -71,6 +71,12 @@ body {
 #main_content {
 	background: url(../../images/bg_two.png) top center no-repeat;
 }
+
+
+
+
+
+
 /* NAVBAR */
 .navbar-default {
 	border-radius: 0px 0px 5px 5px;
@@ -84,6 +90,24 @@ body {
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {
 	color: #d67a1f;
 }
+
+
+
+
+
+
+div.stat_panel {color:#f0e6d2}
+
+
+
+
+
+
+
+
+
+
+
 /*  Debug   */
 .debug_line {
 	margin-top: 20px;

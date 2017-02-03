@@ -1,29 +1,38 @@
-  <tr>
-      <td colspan="2" class="text-center"><h3>Your Top 10 Aram champion</h3> </td>
+<div class="col-md-12 stat_panel">
+    
+ <div class="text-center">
+ 
+    <h4>Your best champions</h4>
 
-  </tr>
+<?php
+
+foreach ($MVC_data as $key => $value) {
+    //$this->SF->prh($value);
   
-  <?php 
+    $win         = $value["win"];
+    $lose        = $value["lose"];
+    $kda        = $value["kda"];
+    $championArray = json_decode($value["championArray"]);
+    if($championArray != FALSE){
+        
+    
+    $champName     = $championArray->name;
+    //$this->SF->prh($championArray);
+   
+    
+    
 
-    foreach ($MVC_data as $key => $value) {
-      //$this->SF->prh($value);
-      $win = $value["win"];
-      $lose = $value["lose"];
-      $champ_array = json_decode($value["championArray"]);
+    ?>
 
-      $champName = $champ_array->name;
-      $championArray = $value["championArray"];
-      
-      
-      ?>
-      
+ <div class="row">
+    <div class="col-md-12"><!--Dinamic summoner icon generator --></div>
+    <div class="col-md-12"><span class="championName"><?php echo "$champName"; ?></span></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h5 class="championStat"><?php echo " $win / $lose <br><small>$kda</small> "; ?></h5>
+    </div>
+  </div>
 
-  <tr>
-      <td colspan="2" class="h6"><?php  echo "champ_img <br> $champName"; ?></td>
-
-  </tr>
-    <tr>
-    <td><?php  echo "Wins: $win"; ?></td>
-    <td><?php echo "Loses: $lose"; ?></td>
-  </tr>
-     <?php }?>
+<?php  }} ?>
+</div> </div>

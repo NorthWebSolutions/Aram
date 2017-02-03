@@ -9,7 +9,7 @@
             <!-- left-panel global stats-->
             <?php $this->load->view("personalstatistics/global_aram_statistics"); ?> 
             <!-- left-panel champ statics-->
-            <?php $this->load->view("personalstatistics/chhamp_statistics"); ?> 
+            <?php $this->load->view("personalstatistics/champ_statistics"); ?> 
 
 
         </div>

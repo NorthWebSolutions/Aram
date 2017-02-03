@@ -16,6 +16,7 @@ class RiotSync extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
+        if($this->session->nws_login != TRUE){            redirect("Login/index");}
         $this->load->model('aram_model');
         $this->load->model('users_model');
     }

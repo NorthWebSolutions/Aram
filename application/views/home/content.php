@@ -19,6 +19,8 @@
 
     </p>
 
+    
+    <h2 class="text-warning">THIS WEBSITE IS UNDER DEVELOPMENT - BEVARE BUGS and tons of error messeges :) :P </h2>
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>

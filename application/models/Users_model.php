@@ -41,6 +41,22 @@ class Users_model extends CI_Model{
     }
     
     
+    public function updateSummoner() {
+        
+            $username = $this->input->post('username');
+            $server = $this->input->post('server');
+        
+            $insert_Data = array(
+                'username' => $username,
+                'server' => $server,
+            );
+
+        $this->db->where('email',$this->session->email);
+        $this->db->update('users', $insert_Data);
+        
+    }
+    
+    
     public function check_summoner($email, $PassWord) {
         
   
