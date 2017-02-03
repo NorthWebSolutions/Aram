@@ -83,3 +83,12 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+defined('CSS_path')      OR define('CSS_path', "/application/assets/css/"); //CONSTANS CSS loading path
+defined('IMG_path')      OR define('IMG_path', "/application/assets/images/"); //CONSTANS Images loading path
+defined('JS_path')      OR define('JS_path', "/application/assets/JS/"); //CONSTANS Images loading path
+
+
+
+
+    

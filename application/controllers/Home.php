@@ -11,31 +11,71 @@
  *
  * @author mrgab
  */
-class Home extends CI_Controller{
+class Home extends CI_Controller
+{
     //put your code here
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
     
-    public function index() {
-        
-        $this->load->helper('form');
-        $this->load->library(array ('Dns' => 'DNS'));
+    public function index()
+    {
         
         
         
         
+//        $this->load->helper('Url');
+//        $this->load->library(array(
+//            'Dns' => 'DNS'
+//        ));
+        //$this->load->helper('form');
         
-        $data['title'] = "Welcome Summoner" ;
-        $data['crypted_str'] = $this->DNS->crypt_pass('YedQ?!E>E2HLX`NF');
         
-        $this->load->view('/templates/header', $data);
-        $this->load->view('/templates/normal_navbar', $data);
-        $this->load->view('/templates/start_content', $data);
-        $this->load->view('/templates/debug_box', $data);
-        $this->load->view('/forms/login_box', $data);
-        $this->load->view('/templates/stop_content', $data);
-        $this->load->view('/templates/footer', $data);
+        //////////// redirects
+        //  PLEASE REDIRECT EVERTHYING BELLOW
+        //
+
+        /// if not loged in
+        if($this->session->nws_login != TRUE){
+            redirect("Login/index");
+        }
+        
+
+        /// if loged in but dont have summonerID
+        if($this->session->nws_login === TRUE && !isset($_SESSION['summonerid'])){
+            
+            //triger SummonerId Search
+            $summonerName = $_SESSION["username"];
+            $summ_sm       = strtolower($summonerName);
+            $summonerID    = $this->RAH->getSummonerIdBySummonerName($summonerName);          
+            
+
+            
+        if(isset($summonerID["status"]["status_code"]) && $summonerID["status"]["status_code"] == "404"){
+            redirect("Profile/changeSummonerName");
+        }
+        
+            
+            
+           
+  
+            
+            $userNfo = array(
+                'summonerid' => $summonerID[$summ_sm]["id"],
+                'profileIconId' => $summonerID[$summ_sm]["profileIconId"],
+                'summonerLevel' => $summonerID[$summ_sm]["summonerLevel"]);
+            
+            
+            $this->session->set_userdata($userNfo);
+           
+        } 
+        
+        /// else
+         redirect("PersonalStatistics/overview");
+        
+//            $data['title'] = "Welcome Summoner";           
+//            redirect("PersonalStatistics/overview");
         
     }
 }

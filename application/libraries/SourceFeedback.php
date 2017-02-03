@@ -12,10 +12,14 @@ class sourceFeedback {
     }
     
     public function prh($param) {
-        
-        echo "<pre>";
+        echo "<div class=\"container debug_line\">";
+        echo "<pre><h6>Debug Panel</h6><hr>";
         print_r($param);
         echo "</pre>";
+        echo "</div>";
         
     }
+    
+    
+
 }
