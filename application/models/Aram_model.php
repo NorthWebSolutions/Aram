@@ -55,11 +55,15 @@ class Aram_model extends CI_Model {
     }
 
     public function syncDatabaseWithRecentByList($array) {
+        
+        if($array != FALSE){
 
 
         
 
         $this->db->insert_batch('aram_data_table', $array);
+        
+        }
     }
 
     public function checkDatabasesForThisGameId($gameId) {

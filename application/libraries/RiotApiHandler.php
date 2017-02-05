@@ -14,16 +14,25 @@ class RiotApiHandler {
         $this->CI = & get_instance();
     }
 
-    public function getSummonerIdBySummonerName($summonerName) {
+    public function getSummonerIdBySummonerName($summonerName, $server = false) {
 
 
 
 
 
         $URL_String = "/api/lol/{region}/v1.4/summoner/by-name/$summonerName";
+        if ($server != false){
+            
+            $data["url"] = $URL_String;
+            $data["server"] = $server;
+            
+            $URL = $this->CI->AC->buildCurl_extended($data);
+            
+            
+        }else{
 
         $URL = $this->CI->AC->buildCURL($URL_String);
-
+        }
         $result = $this->CI->AC->getCurl($URL);
 
         //$this->CI->SF->prh($result);
@@ -43,11 +52,19 @@ class RiotApiHandler {
         
         // if it is an array-> make the loop-> filter-data -> fill up summonerIDs
         if(is_array($summonerID)){
-            
+              //$this->CI->SF->prh($summonerID);
+                            
+                
+                
             $counter = 0;
             foreach ($summonerID as $key => $value) {
+            
+                $thisSummonerId = $key;
+                $thisSummonerServer = $value;
+                          
+
                 
-                $url = $this->CI->AC->buildCURL($string, $key);
+                $url = $this->CI->AC->buildCurl_extended(array("url" => $string, "server" => $thisSummonerServer, "summonerID" => $thisSummonerId ));
                 $result[$key] = $this->CI->AC->getCurl($url);
             }
             

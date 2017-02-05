@@ -1,8 +1,13 @@
 <table class="table stat_panel">
     <thead>
         <tr>
-            <th colspan="2" class="text-center "><h3><?php echo ucfirst($this->session->username); ?><br />
-                    <small>Aram stats:</small></h3></th>
+            <th colspan="2" class="text-center "><h3><?php echo ucfirst($this->session->username); ?>
+                
+                </h3>
+                <p><?php echo ucfirst($this->session->server); ?></p>
+            
+            
+            </th>
         </tr>
     </thead>
     <tbody>

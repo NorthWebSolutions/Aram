@@ -22,6 +22,7 @@ class Users_model extends CI_Model{
     public function reg_new_summoner() {
             $username = $this->input->post('username');
             $email = $this->input->post('email');
+            $server = $this->input->post('server');
             
                 ///// SECURE THE PASSWORD: 
             $this->load->library(array ('Dns' => 'DNS'));
@@ -32,6 +33,7 @@ class Users_model extends CI_Model{
             $insert_Data = array(
                 'username' => $username,
                 'password' => $encrypted_Pw,
+                'server' => $server,
                 'email' => $email,
                 'active' => 1
             );
@@ -71,6 +73,7 @@ class Users_model extends CI_Model{
             $userNfo = array(
                 'username' => $row->username,
                 'email'     => $row->email,
+                'server'     => $row->server,
                 'nws_login' => TRUE
                  );
             
@@ -90,13 +93,14 @@ class Users_model extends CI_Model{
     
     public function returnOnlyUsernames() {
         
-        $query = $this->db->select('username')
+        $query = $this->db->select("username, server" )
                 
-                ->order_by('username')
+                
                 ->get('users');
         
         $result = $query->result();
-        return $result;
+     
+        return $result; 
         
     }
     

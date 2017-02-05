@@ -48,7 +48,8 @@ class Home extends CI_Controller
             //triger SummonerId Search
             $summonerName = $_SESSION["username"];
             $summ_sm       = strtolower($summonerName);
-            $summonerID    = $this->RAH->getSummonerIdBySummonerName($summonerName);          
+            $summonerServer = $this->session->server;
+            $summonerID    = $this->RAH->getSummonerIdBySummonerName($summonerName, $summonerServer);          
             
 
             
