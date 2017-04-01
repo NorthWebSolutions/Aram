@@ -18,15 +18,20 @@
 
                 $champName = $championArray->name;
                 $champId   = $championArray->id;
+                
+                             $championImageData["url"] = IMG_path."/championicons/id/$champId.png";
+                              $championImageData["alt"] = $champName;
+                            $championImageData["class"] = "img img-circle img-responsive";
+                            $championIMG = $this->SR->imgWrapper($championImageData);
                 //$this->SF->prh($championArray);
 
-                $img        = $this->SR->returnChampImg($champId);
-                $img_string = $img["img"];
+//                $img_string = $img["img"];
+//                $img        = $this->SR->returnChampImg($champId);
 
                 ?>
 <div class="row"><div class="col-md-12"><hr></div>
                 <div class="row">
-                    <div class="col-md-5"><?php echo "$img_string"; ?></div>
+                    <div class="col-md-5"><?php echo "$championIMG"; ?></div>
                     <div class="col-md-7">
                         <span class="championName"><?php echo "$champName"; ?></span><br>
                         <span class="championStat"><?php echo " $win / $lose <br><small>$kda</small> "; ?></span>

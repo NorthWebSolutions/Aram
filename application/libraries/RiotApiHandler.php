@@ -22,6 +22,7 @@ class RiotApiHandler {
 
         $URL_String = "/api/lol/{region}/v1.4/summoner/by-name/$summonerName";
         if ($server != false){
+            //print_r("Server-def-route");
             
             $data["url"] = $URL_String;
             $data["server"] = $server;
@@ -30,7 +31,7 @@ class RiotApiHandler {
             
             
         }else{
-
+            //print_r("else-route");
         $URL = $this->CI->AC->buildCURL($URL_String);
         }
         $result = $this->CI->AC->getCurl($URL);
@@ -44,6 +45,8 @@ class RiotApiHandler {
 //            [summonerLevel] => 30
 //            [revisionDate] => 1479666950000
 //        )
+        //print_r($result);
+        sleep(1.3);
         return $result;
     }
 
@@ -52,21 +55,28 @@ class RiotApiHandler {
         
         // if it is an array-> make the loop-> filter-data -> fill up summonerIDs
         if(is_array($summonerID)){
-              //$this->CI->SF->prh($summonerID);
+            //$this->CI->SF->prh("get_recent_route");  
+            //$this->CI->SF->prh($summonerID);
                             
                 
                 
-            $counter = 0;
+            //$counter = 0;
+            $data_carrier = array();
+            
             foreach ($summonerID as $key => $value) {
             
                 $thisSummonerId = $key;
-                $thisSummonerServer = $value;
+                $thisSummonerServer = $value["server"];
                           
 
                 
                 $url = $this->CI->AC->buildCurl_extended(array("url" => $string, "server" => $thisSummonerServer, "summonerID" => $thisSummonerId ));
+                $this->CI->SF->prh($url);
                 $result[$key] = $this->CI->AC->getCurl($url);
+                //$this->CI->SF->prh($thisSummonerId);
+                $data_carrier[] = $result;
             }
+            return $data_carrier;
             
         ///////////// NORMAL type of variable:    
         }else {
@@ -82,9 +92,10 @@ class RiotApiHandler {
         
         $url = $this->CI->AC->buildCURL($string, $summonerID);
         $result = $this->CI->AC->getCurl($url);
+        return $result;
         }
         
-        return $result;
+        
     }
     public function getChampNfoByID($champID) {
         //   /api/lol/static-data/{region}/v1.2/champion/{id} 

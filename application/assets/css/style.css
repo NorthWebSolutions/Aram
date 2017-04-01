@@ -150,7 +150,8 @@ div.panel.panel-default table.table.stat_panel tr.warning td.status_color{backgr
 
 
 
-.champ-iconA{
-  
+.champ-icon.sml{
+
+    max-height: 40px;
         
 }

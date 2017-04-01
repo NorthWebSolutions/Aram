@@ -80,7 +80,11 @@ class Aram_model extends CI_Model {
             return TRUE;
         }
     }
-
+public function store_final_data_row($final_data_row) {
+    
+     $this->db->insert('aram_data_table', $final_data_row);
+    
+}
     public function checkAndStore($param) {
 
 
