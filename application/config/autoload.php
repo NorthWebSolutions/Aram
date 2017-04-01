@@ -58,7 +58,13 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('SourceFeedback' => 'SF', 'ApiConnector' => 'AC', 'RiotApiHandler' => 'RAH', 'database', 'session');
+$autoload['libraries'] = array( 'SourceFeedback' => 'SF',
+    'ApiConnector' => 'AC',
+    'RiotApiHandler' => 'RAH',
+    'database',
+    'session',
+    'StaticRetrever' => 'SR'
+    );
 
 /*
 | -------------------------------------------------------------------

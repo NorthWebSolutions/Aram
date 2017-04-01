@@ -11,7 +11,8 @@
                     <div class="col-xs-4">
                         <h5 class="sr-only">select server:</h5>
                         <select class="form-control" name="server" >
-                            <option>eune</option>
+                            <option value="eune">eune</option>
+                            <option value="euw">euw</option>
                         </select> </div>
                     <div class="col-xs-8">
 
