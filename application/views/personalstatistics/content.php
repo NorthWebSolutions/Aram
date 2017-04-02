@@ -39,7 +39,7 @@ $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
 <div class="col-md-9">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <div class="panel-title">Our Database sotred data from ARAM history:</div>
+            <div class="panel-title">Our Database stored data from ARAM history:</div>
         </div>
         <table class="table stat_panel ">
             <thead>
@@ -64,9 +64,12 @@ $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
 foreach ($DataBaseData as $key => $value) {
     
     
+    
+    
    $statsObj = $value["statsArray"];
    
-   $kills = $statsObj->championsKilled;
+   if(isset($statsObj->championsKilled)){
+   $kills = $statsObj->championsKilled;}else{$kills = 0;}
    $level = $statsObj->level;
    $numDeaths = $statsObj->numDeaths;
    $goldSpent = $statsObj->goldSpent;

@@ -64,12 +64,19 @@ class Aram_model extends CI_Model {
         }
     }
 
-    public function checkDatabasesForThisGameId($gameId) {
+    public function checkDatabasesForThisGameId($gameId, $summonerId) {
+        
 
+        
+        //$this->SF->prh($gameId);
 
-        $query = $this->db->get_where('aram_data_table',array( 'gameID' => "$gameId" ));
-
+        $query = $this->db->get_where('aram_data_table',array('summonerID' => "$summonerId", 'gameID' => "$gameId" ));
+        
+        //$this->SF->prh($query);
+        
         $result = $query->row();
+        
+        //$this->SF->prh($result);
 
 
         if ( !$result ) {

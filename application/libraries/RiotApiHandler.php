@@ -73,7 +73,7 @@ class RiotApiHandler {
 
                 
                 $url = $this->CI->AC->buildCurl_extended(array("url" => $string, "server" => $thisSummonerServer, "summonerID" => $thisSummonerId ));
-                $this->CI->SF->prh($url);
+                //$this->CI->SF->prh($url);
                 $result[$key] = $this->CI->AC->getCurl($url);
                 $this->CI->SF->prh("processing: $counter / $stat_total");
                 $data_carrier[] = $result;
