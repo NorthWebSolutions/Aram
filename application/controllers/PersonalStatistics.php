@@ -20,7 +20,7 @@ class PersonalStatistics extends CI_Controller {
 
         //$this->SF->prh($_SESSION);
         //$personal_id = $this->RAH->getSummonerIdBySummonerName("");
-        $data['title'] = "Personal Statistics";
+        $data['title'] = "Personal Statistics GUI 0.2";
 
         $data['DataBaseData'] = $this->aram_model->getAllAramStatForUser($this->session->summonerid);
 

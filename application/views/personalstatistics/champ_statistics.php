@@ -1,10 +1,7 @@
 <div class="col-md-12 stat_panel">
-
-    <div class="text-center">
-
-        <h4>Your best champions</h4>
-
-        <?php
+  <div class="text-center">
+    <h4>Your best champions</h4>
+    <?php
 
         foreach ($MVC_data as $key => $value) {
             //$this->SF->prh($value);
@@ -29,18 +26,17 @@
 //                $img        = $this->SR->returnChampImg($champId);
 
                 ?>
-<div class="row"><div class="col-md-12"><hr></div>
-                <div class="row">
-                    <div class="col-md-5"><?php echo "$championIMG"; ?></div>
-                    <div class="col-md-7">
-                        <span class="championName"><?php echo "$champName"; ?></span><br>
-                        <span class="championStat"><?php echo " $win / $lose <br><small>$kda</small> "; ?></span>
-                    </div>
-                </div>
-        
-            
-            </div>
-
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-5"><?php echo "$championIMG"; ?></div>
+        <div class="col-md-7"> <span class="championName"><?php echo "$champName"; ?></span><br>
+          <span class="championStat"><?php echo " $win / $lose <br><small>$kda</small> "; ?></span> </div>
+      </div>
+    </div>
     <?php }
 } ?>
-    </div> </div>
+  </div>
+</div>

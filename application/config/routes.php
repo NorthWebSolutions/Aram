@@ -56,3 +56,5 @@ $route['translate_uri_dashes'] = FALSE;
 $route['registration'] = '/registration/index';
 $route['home'] = 'home';
 
+#$route['method/(:any)/(:any)'] = 'controller/method/$1/$2';
+$route["sync/(:any)/(:any)"] = '/RiotSync/autosync/$1/$2';

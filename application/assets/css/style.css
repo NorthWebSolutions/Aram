@@ -1,5 +1,6 @@
 body {
 	background: #010a13;
+        padding-bottom: 60px;
 }
 .panel-default {
 	border: 1px #785a28 solid;
@@ -40,7 +41,7 @@ body {
 	margin-top: 5%;
 	margin-bottom: 30px;
 }
-.info_panel > h1, h2, h3, p {
+.info_panel > h1, h2, h3, h4, h5, h6, p {
 	color: #f0e6d2;
 }
 .info_panel > strong {
@@ -68,14 +69,25 @@ body {
 	color: #000;
 	font-weight: bold;
 }
-#main_content {
+#main_bg {
 	background: url(../../images/bg_two.png) top center no-repeat;
+        z-index: -1;
+        
+        min-height: 100%;
+        min-width: 100%;
+        position: fixed;
 }
 
 
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.64);
+  border-top: #785a28 1px solid;
+  /* Set the fixed height of the footer here */
 
-
-
+}
 
 /* NAVBAR */
 .navbar-default {
@@ -155,3 +167,12 @@ div.panel.panel-default table.table.stat_panel tr.warning td.status_color{backgr
     max-height: 40px;
         
 }
+
+
+/* FOOTER */
+ .copyright { min-height:40px; font-size: 0.8em}
+ .copyright p { text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;}
+  .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
+ .bottom_ul li { float:left; line-height:40px;}
+ .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
+ .bottom_ul li a { color:#FFF;  font-size:12px; font-size: 0.8em}

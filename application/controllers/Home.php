@@ -46,10 +46,12 @@ class Home extends CI_Controller
         if($this->session->nws_login === TRUE && !isset($_SESSION['summonerid'])){
             
             //triger SummonerId Search
-            $summonerName = $_SESSION["username"];
-            $summ_sm       = strtolower($summonerName);
+            
+                        $search = array(" ");
+            $replace = array("");
+            $summ_sm      = str_replace($search, $replace,strtolower( $_SESSION["username"]));
             $summonerServer = $this->session->server;
-            $summonerID    = $this->RAH->getSummonerIdBySummonerName($summonerName, $summonerServer);          
+            $summonerID    = $this->RAH->getSummonerIdBySummonerName($summ_sm, $summonerServer);          
             
 
             

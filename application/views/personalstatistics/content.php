@@ -1,6 +1,6 @@
 <?php if ( $this->session->flashdata('msg') ) { ?>
 
-    <div class="SiteResponds"> <?php echo $FLASH_MSG; ?> </div>
+<div class="SiteResponds"> <?php echo $FLASH_MSG; ?> </div>
 <?php } ?>
 <?php
 
@@ -32,33 +32,30 @@ $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
 
 ?>
 <div class="col-md-3">
-<?php $this->load->view("personalstatistics/left_panel_dock"); ?>    
+  <?php $this->load->view("personalstatistics/left_panel_dock"); ?>
 </div>
-
-
 <div class="col-md-9">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="panel-title">Our Database stored data from ARAM history:</div>
-        </div>
-        <table class="table stat_panel ">
-            <thead>
-            <th>&nbsp;</th>
-            <th>Champion</th>
-<th class="text-center" >K/D/A <br /><small>Creeps</small> </th>
-            <th class="text-center">Damage Dealt<br />
-                <small>to champions</small></th>
-            <th class="text-center">Damage Taken<br />
-
-                <small>by champions</small></th>
-                        <th class="text-center">Gold Earned<br />
-
-                <small>not-spent</small></th>
-            <th class="text-center">IP <small>earned</small><br/><small>Game Time</small></th>
-
-            </thead>
-            <tbody>
-<?php
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">Our Database stored data from ARAM history:</div>
+    </div>
+    <table class="table stat_panel ">
+      <thead>
+      <th>&nbsp;</th>
+        <th>Champion</th>
+        <th class="text-center" >K/D/A <br />
+          <small>Creeps</small> </th>
+        <th class="text-center">Damage Dealt<br />
+          <small>to champions</small></th>
+        <th class="text-center">Damage Taken<br />
+          <small>by champions</small></th>
+        <th class="text-center">Gold Earned<br />
+          <small>not-spent</small></th>
+        <th class="text-center">IP <small>earned</small><br/>
+          <small>Game Time</small></th>
+          </thead>
+      <tbody>
+        <?php
 
 
 foreach ($DataBaseData as $key => $value) {
@@ -133,9 +130,9 @@ echo "<td class=\"text-center\">$kills/$numDeaths/$assists<br>$minionsKilled</td
 }
 
 ?>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
+          </tr>
+        
+      </tbody>
+    </table>
+  </div>
 </div>

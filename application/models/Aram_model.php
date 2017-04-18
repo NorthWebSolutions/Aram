@@ -70,18 +70,23 @@ class Aram_model extends CI_Model {
         
         //$this->SF->prh($gameId);
 
-        $query = $this->db->get_where('aram_data_table',array('summonerID' => "$summonerId", 'gameID' => "$gameId" ));
+        $query = $this->db->get_where('aram_data_table',array('summonerID' => $summonerId, 'gameID' => $gameId ));
         
         //$this->SF->prh($query);
         
         $result = $query->row();
-        
         //$this->SF->prh($result);
+        
 
 
         if ( !$result ) {
+            
+            //$this->SF->prh($query);
+            //$this->SF->prn("req: summonerid: $summonerId / gameid: $gameId wich result:  FALSE");
             return FALSE;
+            
         } else {
+            //$this->SF->prn("req: summonerid: $summonerId / gameid: $gameId wich result:  TRUE");
             return TRUE;
         }
     }
