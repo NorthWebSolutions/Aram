@@ -1,26 +1,11 @@
 
-
-
-
-
-
-
-
-<div class="col-md-6 text-right info_panel"><h3>What is this website? </h3>
-
-    <p>This website will <strong>record and make a personal stat</strong><br> form League of legends play when you are in ARAM mode.  </p>
-
-
-
-
-    <p>
-
-        Developed by North Web Solutions 2017
-
-    </p>
-
-    
-    <h2 class="text-warning">THIS WEBSITE IS UNDER DEVELOPMENT - BEVARE BUGS and tons of error messeges :) :P </h2>
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="col-md-6 text-right info_panel">
+  <h3>What is this website? </h3>
+  <p>Are you playing LEAGUE of LEGENDS?</p>
+  <p>Did you wondered how god or bad you are in ARAM with random champions?<br>
+    Well, there is no specificed data in the Riot's match history. </p>
+  <h4>After registration you can store <br>
+    <span class="text-primary">ALL your ARAM match history in here</span><br>
+    <small>As we developing the website we will add tons of statistics</small></h4>
+  <p class="small text-warning"> Developed by North Web Solutions 2017 </p>
 </div>

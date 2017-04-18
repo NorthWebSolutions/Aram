@@ -70,14 +70,15 @@ class RiotApiHandler {
                 $thisSummonerId = $key;
                 $thisSummonerServer = $value["server"];
                           
-
-                
-                $url = $this->CI->AC->buildCurl_extended(array("url" => $string, "server" => $thisSummonerServer, "summonerID" => $thisSummonerId ));
-                //$this->CI->SF->prh($url);
+                $curl_to_build = array("url" => $string, "server" => $thisSummonerServer, "summonerID" => $thisSummonerId );
+                //if($thisSummonerServer == "euw"){$curl_to_build["base"] = "https://euw.api.riotgames.com";}
+                $url = $this->CI->AC->buildCurl_extended($curl_to_build);
+                //$this->CI->SF->prn($url);
                 $result[$key] = $this->CI->AC->getCurl($url);
-                $this->CI->SF->prh("processing: $counter / $stat_total");
+                //$this->CI->SF->prn("processing: $counter / $stat_total");
                 $data_carrier[] = $result;
             }
+            
             return $data_carrier;
             
         ///////////// NORMAL type of variable:    

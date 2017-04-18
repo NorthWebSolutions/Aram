@@ -15,11 +15,11 @@ class RiotSync extends CI_Controller {
 
     private $SW_show_not_aram_game       = false;
     private $SW_show_stored_aram_game    = false;
-    private $SW_show_user_list           = true;
-    private $SW_show_user_error          = true;
+    private $SW_show_user_list           = false;
+    private $SW_show_user_error          = false;
     private $SW_show_user_process        = false;
     private $SW_show_user_processed_list = false;
-    private $SW_show_updated             = true;
+    private $SW_show_updated             = false;
     
     private $updated_rows             = array();
     private $updated_rows_c             = 0;
@@ -33,6 +33,7 @@ class RiotSync extends CI_Controller {
         }
         $this->load->model('aram_model');
         $this->load->model('users_model');
+        $this->load->helper("url");
     }
 
     public function index() {
@@ -49,25 +50,72 @@ class RiotSync extends CI_Controller {
         $this->load->view('/templates/footer',$data);
     }
 
-    public function autosync() {
+    public function autosync($username = false, $server = false) {
         if ( $this->session->nws_login != TRUE ) {
             redirect("Login/index");
         }
 
-        $users_list             = $this->users_model->returnOnlyUsernames();
+    if( isset($username) && $username != FALSE && isset($server) && $server != false){
+//        $this->SF->prn($username);
+//        $this->SF->prn($server);
+        
+        $users_list = new stdClass;
+        $users_list->users_to_chk  = new stdClass;
+        $users_list->users_to_chk->username = $username;
+        $users_list->users_to_chk->server = $server;
+        
+        
+        $sw_exit_rout = 1;
+        
+//        $users_list[0]["username"] = "$username";
+//        $users_list[0]["server"] = "$server";
+    }else{
+        $users_list             = $this->users_model->returnOnlyUsernames(); 
+        $sw_exit_rout = 2;
+   }
+        
+        
+        
         //$data['debug'][] = "";
+        //$this->SF->prn($users_list);
+       
+
+        
+        switch ($sw_exit_rout) {
+            case 1:
+                // this is the manual sync
+                $filtered_list          = $this->filter_users_list($users_list);
+                $api_request            = $this->RAH->getRecentBySummonerId($filtered_list);
+                $final_filter_and_store = $this->filter_and_store($api_request);
+                
+                 redirect('/PersonalStatistics/overview', 'refresh');
+
+                break;
+            case 2:
+                //this is the autosync
         $this->SF->prn("---------------------- Get users to check:".count($users_list)." ----------------------");
         
         $this->SF->prn("---------------------- Vaildate users and generate the correct api request list ----------------------");
         $filtered_list          = $this->filter_users_list($users_list);
         $this->SF->prn("---------------------- List for Api requests ready ----------------------");
         //$this->SF->prn($filtered_list);
+        
         $this->SF->prn("---------------------- request all API data what is nessesery ----------------------");
         $api_request            = $this->RAH->getRecentBySummonerId($filtered_list);
+        
         $this->SF->prn("---------------------- processing API data ----------------------");
+       
         $final_filter_and_store = $this->filter_and_store($api_request);
         $this->SF->prn("---------------------- FINAL UPDATE TABLE ----------------------");
         $this->SF->prn($this->updated_rows_c);
+                echo 'case2-ended-';
+                break;
+
+            default:
+                break;
+        }
+        
+        
         
     }
 
@@ -86,9 +134,9 @@ class RiotSync extends CI_Controller {
                 $counter++;
                 $breakdown = $this->breakdown_to_sub_value($value);
                 
-                 $this->SF->prn("api request: $counter / $api_total ");
+                 //$this->SF->prn("api request: $counter / $api_total ");
             }
-            $this->SF->prn($breakdown);
+            //$this->SF->prn($breakdown);
             return $this->updated_rows;
         }
     }
@@ -128,7 +176,7 @@ class RiotSync extends CI_Controller {
                 //$this->SF->prn($game_is_stored);
 //                $game_is_stored = FALSE;
 //
-                if ( !$game_is_stored) {
+                if ( $game_is_stored === FALSE ) {
                     $stats                       = $game_value['stats'];
                     $champNfo                    = $this->RAH->getChampNfoByID($game_value["championId"]);
                     $fellowPlayers               = $game_value['fellowPlayers'];
@@ -169,7 +217,7 @@ class RiotSync extends CI_Controller {
             
         }
         
-        return;
+        return $counter;
     }
 
     private function filter_users_list($users_list) {
@@ -201,7 +249,7 @@ class RiotSync extends CI_Controller {
                 
                 //$this->SF->prn($summonerData);
                 if ( $this->SW_show_user_list ) {
-                    $this->SF->prn("processing: $counter / $stat_total");
+                    //$this->SF->prn("processing: $counter / $stat_total");
                 }
                 $key                                = $summonerData[$summ_sm]["id"];
                 $recentGameForUsers[$key]["name"]   = "$summonerName";
