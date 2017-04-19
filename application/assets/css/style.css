@@ -1,6 +1,6 @@
 body {
 	background: #010a13;
-        padding-bottom: 60px;
+	padding-bottom: 60px;
 }
 .panel-default {
 	border: 1px #785a28 solid;
@@ -71,24 +71,18 @@ body {
 }
 #main_bg {
 	background: url(../../images/bg_two.png) top center no-repeat;
-        z-index: -1;
-        
-        min-height: 100%;
-        min-width: 100%;
-        position: fixed;
+	z-index: -1;
+	min-height: 100%;
+	min-width: 100%;
+	position: fixed;
 }
-
-
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.64);
-  border-top: #785a28 1px solid;
-  /* Set the fixed height of the footer here */
-
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.64);
+	border-top: #785a28 1px solid;/* Set the fixed height of the footer here */
 }
-
 /* NAVBAR */
 .navbar-default {
 	border-radius: 0px 0px 5px 5px;
@@ -102,24 +96,9 @@ body {
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-brand:hover {
 	color: #d67a1f;
 }
-
-
-
-
-
-
-div.stat_panel {color:#f0e6d2}
-
-
-
-
-
-
-
-
-
-
-
+div.stat_panel {
+	color: #f0e6d2
+}
 /*  Debug   */
 .debug_line {
 	margin-top: 20px;
@@ -145,34 +124,71 @@ div.stat_panel {color:#f0e6d2}
 	display: flex;
 	text-align: center;
 }
-div.panel.panel-default{background: transparent;}
-div.panel.panel-default table.table.stat_panel *{background: transparent; 
-                                                 
-                                                 border-top-color:#785a28;
-                                                 border-bottom-color: #785a28;
-                                                 color: #f0e6d2;
-                                      
+div.panel.panel-default {
+	background: transparent;
 }
-
-div.panel.panel-default table.table.stat_panel small{font-size: xx-small;}
-div.panel.panel-default table.table.stat_panel tr.success td{background-color:rgba(110, 214, 110, 0.1)}
-div.panel.panel-default table.table.stat_panel tr.success td.status_color{background-color:rgba(110, 214, 110, 0.85)}
-div.panel.panel-default table.table.stat_panel tr.warning td{background-color:rgba(466, 57, 53, 0.1)}
-div.panel.panel-default table.table.stat_panel tr.warning td.status_color{background-color:rgba(466, 57, 53, 0.85)}
-
-
-
-.champ-icon.sml{
-
-    max-height: 40px;
-        
+div.panel.panel-default table.table.stat_panel * {
+	background: transparent;
+	border-top-color: #785a28;
+	border-bottom-color: #785a28;
+	color: #f0e6d2;
 }
+div.panel.panel-default table.table.stat_panel small {
+	font-size: xx-small;
+}
+div.panel.panel-default table.table.stat_panel tr.success td {
+	background-color: rgba(110, 214, 110, 0.1)
+}
+div.panel.panel-default table.table.stat_panel tr.success td.status_color {
+	background-color: rgba(110, 214, 110, 0.85)
+}
+div.panel.panel-default table.table.stat_panel tr.warning td {
+	background-color: rgba(466, 57, 53, 0.1)
+}
+div.panel.panel-default table.table.stat_panel tr.warning td.status_color {
+	background-color: rgba(466, 57, 53, 0.85)
+}
+.champ-icon{        border: 1px solid #785a28;
+        box-shadow: 3px 3px 5px #000;}
+.champ-icon.lg{
+    max-height: 60px;
+    margin-right: 20px;
+}
+.champ-icon.sml {
+	max-height: 50px;
 
 
+}
 /* FOOTER */
- .copyright { min-height:40px; font-size: 0.8em}
- .copyright p { text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;}
-  .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
- .bottom_ul li { float:left; line-height:40px;}
- .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
- .bottom_ul li a { color:#FFF;  font-size:12px; font-size: 0.8em}
+.copyright {
+	min-height: 40px;
+	font-size: 0.8em
+}
+.copyright p {
+	text-align: left;
+	color: #FFF;
+	padding: 10px 0;
+	margin-bottom: 0px;
+}
+.bottom_ul {
+	list-style-type: none;
+	float: right;
+	margin-bottom: 0px;
+}
+.bottom_ul li {
+	float: left;
+	line-height: 40px;
+}
+.bottom_ul li:after {
+	content: "/";
+	color: #FFF;
+	margin-right: 8px;
+	margin-left: 8px;
+}
+.bottom_ul li a {
+	color: #FFF;
+	font-size: 12px;
+	font-size: 0.8em
+}
+
+.champText {color:#FFF; margin:10px 0px 0px 0px; max-height:80px;}

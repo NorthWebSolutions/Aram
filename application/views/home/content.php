@@ -2,7 +2,7 @@
 <div class="col-md-6 text-right info_panel">
   <h3>What is this website? </h3>
   <p>Are you playing LEAGUE of LEGENDS?</p>
-  <p>Did you wondered how god or bad you are in ARAM with random champions?<br>
+  <p>Did you wonder how good or bad you are in ARAM with random champions?<br>
     Well, there is no specificed data in the Riot's match history. </p>
   <h4>After registration you can store <br>
     <span class="text-primary">ALL your ARAM match history in here</span><br>

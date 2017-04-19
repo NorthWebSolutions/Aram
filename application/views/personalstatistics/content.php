@@ -37,7 +37,9 @@ $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
 <div class="col-md-9">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="panel-title">Our Database stored data from ARAM history:</div>
+      <div class="panel-title">Our Database stored data from ARAM history:
+          
+      </div>
     </div>
     <table class="table stat_panel ">
       <thead>
@@ -103,7 +105,7 @@ foreach ($DataBaseData as $key => $value) {
         $img_opt                    = array( 'class' => "img img-circle champ-icon sml" );
         $championImageData["url"]   = IMG_path . "/championicons/id/$champId.png";
         $championImageData["alt"]   = $championName;
-        $championImageData["class"] = "img img-circle champ-icon sml";
+        $championImageData["class"] = "img img-circle champ-icon sml center-block";
         $championIMG                = $this->SR->imgWrapper($championImageData);
     }
 

@@ -18,8 +18,18 @@ class Aram_model extends CI_Model {
     }
 
     public function getAllAramStatForUser($summonerID) {
+        
+        $this->db->from('aram_data_table');
+        $this->db->where('summonerID', $summonerID);
+        $this->db->group_by('gameID');
+        $this->db->order_by('gameDate', 'DESC');
+        
+      // $query = $this->db->query('SELECT * FROM aram_data_table WHERE summonerID orederby IN (SELECT MIN(summonerID) FROM aram_data_table GROUP BY gameDate)');
 
-        $query = $this->db->get_where('aram_data_table',array( 'summonerID' => $summonerID ));
+        
+        $query = $this->db->get();
+        //$query = $this->db->get_where('aram_data_table',array( 'summonerID' => $summonerID ));
+        //$query = $this->db->order_by('gameDate', 'DESC');
 
         $final_result = array();
         foreach ($query->result() as $key => $game) {
@@ -44,10 +54,16 @@ class Aram_model extends CI_Model {
     }
 
     public function get_Champ_wins_at_aram($summonerID) {
+        
+        
+        //$this->db->distinct();
 
         $query = $this->db->select('gameIsWin, champion, championArray')
                   ->where('summonerID',$summonerID)
+                  ->group_by('gameID')
                   ->get('aram_data_table');
+                  
+                    
 
         $result = $query->result();
         return $result;
@@ -71,6 +87,7 @@ class Aram_model extends CI_Model {
         //$this->SF->prh($gameId);
 
         $query = $this->db->get_where('aram_data_table',array('summonerID' => $summonerId, 'gameID' => $gameId ));
+   
         
         //$this->SF->prh($query);
         
