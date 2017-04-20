@@ -18,7 +18,7 @@ class ImageRetrever extends CI_Controller {
 
     protected $RequestMainType;
     protected $IR_FAIL;
-    protected $path_to_images = "application/assets/images/";
+    protected $path_to_images = "/assets/images/";
 
     //private $
 
@@ -39,8 +39,8 @@ class ImageRetrever extends CI_Controller {
     /* $param can be a single ID or multiple */
 
     public function index($param = false) {
-        
-        
+
+
         //$param = array("34");
 
         $param = array( 266,103,84,12,32,34,1,22,136,268,432,53,63,201,51,164,69,31,
@@ -55,69 +55,68 @@ class ImageRetrever extends CI_Controller {
 
 
         switch ($this->RequestMainType) {
-            
+
             case "array_request":
                 echo "RequestMainType equals array_request<br>";
 
                 foreach ($param as $value) {
                     //$this->SF->prh($value);
-                    
-                    
-                    if( file_exists("/".img_champ_id . $value . ".png")){
+
+
+                    if ( file_exists(img_champ_id . $value . ".png") ) {
                         echo "THE FILE IS EXIST<br>";
-                     
-                        
                     } else {
-           
-                    $curlArray = array(
-                        'staticParam' => "champData=image",
-                        'url'         => "/api/lol/static-data/{region}/v1.2/champion/$value",
-                        'base'        => "https://global.api.pvp.net/",
-                        'server'      => "eune"
 
-                    );
+                        echo "/" . img_champ_id . $value . ".png";
 
-
-
-                    $url    = $this->AC->buildCurl_extended($curlArray);
-                    $result = $this->AC->getCurl($url);
-                    
-                    //$this->SF->prh($result);
+                        $curlArray = array(
+                            'staticParam' => "champData=image",
+                            'url'         => "/api/lol/static-data/{region}/v1.2/champion/$value",
+                            'base'        => "https://global.api.pvp.net/",
+                            'server'      => "eune"
+                        );
 
 
-                    $statSrcPart       = "http://ddragon.leagueoflegends.com/cdn/7.3.1/img/champion/";
-                    ///req data: URL, Alt, Class, data-params
-                    $returnData[$value]["url"] = $statSrcPart . $result["image"]["full"];
-                    $returnData[$value]["filename"] = $result["image"]["full"];
+
+                        $url    = $this->AC->buildCurl_extended($curlArray);
+                        $result = $this->AC->getCurl($url);
+
+                        //$this->SF->prh($result);
+
+
+                        $statSrcPart                    = "http://ddragon.leagueoflegends.com/cdn/7.3.1/img/champion/";
+                        ///req data: URL, Alt, Class, data-params
+                        $returnData[$value]["url"]      = $statSrcPart . $result["image"]["full"];
+                        $returnData[$value]["filename"] = $result["image"]["full"];
+                    }
+
+                    //ksort($returnData);
+                    //$this->SF->prh($returnData);
                 }
-                
-                //ksort($returnData);
-                //$this->SF->prh($returnData);
-                
-                if( isset($returnData)){
-                
-                foreach ($returnData as $key => $value) {
-                    
-                    ///$this->SF->prh($value);
-                    
-                    $url_to_save = $value["url"];
-                    $def_filename = $value["filename"];
-                    
-                    
-                    
-                    if ( file_exists("/" . img_champ_id . $key . ".png") ) {
-                        echo 'FILE-Exists: ' . $key . ".png<br>";
-                    } else {
-                        echo 'FILE-NOT-Exists: ' . $key . ".png<br>";
+                if ( isset($returnData) ) {
 
-                        if ( !copy($url_to_save,img_champ_id . "$key.png") ) {
-                            $errors = error_get_last();
-                            echo "COPY ERROR: " . $errors['type'];
-                            echo "<br />\n" . $errors['message'];
+                    foreach ($returnData as $key => $value) {
+
+                        ///$this->SF->prh($value);
+
+                        $url_to_save  = $value["url"];
+                        $def_filename = $value["filename"];
+
+
+
+                        if ( file_exists(img_champ_id . $value . ".png") ) {
+                            echo 'FILE-Exists: ' . $key . ".png<br>";
                         } else {
-                            echo "File copied from remote!";
+                            echo 'FILE-NOT-Exists: ' . $key . ".png<br>";
+
+                            if ( !copy($url_to_save,img_champ_id . "$key.png") ) {
+                                $errors = error_get_last();
+                                echo "COPY ERROR: " . $errors['type'];
+                                echo "<br />\n" . $errors['message'];
+                            } else {
+                                echo "File copied from remote!";
+                            }
                         }
-                }
 
 
 
@@ -133,9 +132,8 @@ class ImageRetrever extends CI_Controller {
 //                            echo "File copied from remote!";
 //                        }
 //                    }
-                } }
-
-}
+                    }
+                }
 
 
                 break;
@@ -155,7 +153,7 @@ class ImageRetrever extends CI_Controller {
                 break;
         }
     }
-    
+
     public function checkParam($param) {
 
         if ( is_array($param) ) {
