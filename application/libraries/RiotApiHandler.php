@@ -110,6 +110,20 @@ class RiotApiHandler {
         return $result;
         
     }
+    
+        public function getAllSummonerIdAvailable() {
+        
+        //  URL: /lol/platform/v3/champions
+        $string = "/lol/platform/v3/champions";
+        $url = $this->CI->AC->buildCURL($string, false, "https://eun1.api.riotgames.com/");
+        $result = $this->CI->AC->getCurl($url);
+        //$this->CI->SF->prh($url);
+        //https://eun1.api.riotgames.com/lol/platform/v3/champions?api_key=RGAPI-e8dc5479-a515-4c4d-b2a1-16925c0054fe
+            
+        return $result;
+        
+        
+    }
 
 
     public function getChampionNfo($param) {

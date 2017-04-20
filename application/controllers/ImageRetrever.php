@@ -15,6 +15,8 @@ class ImageRetrever extends CI_Controller {
 
     //put your code here
 
+    private static $CDNversion = '7.8.1' ;
+    
 
     protected $RequestMainType;
     protected $IR_FAIL;
@@ -43,14 +45,21 @@ class ImageRetrever extends CI_Controller {
 
         //$param = array("34");
 
-        $param = array( 266,103,84,12,32,34,1,22,136,268,432,53,63,201,51,164,69,31,
-            42,122,131,119,36,245,60,28,81,9,114,105,3,41,86,150,79,104,120,74,420,
-            39,427,40,59,24,126,202,222,429,43,30,38,55,10,85,121,203,240,96,7,64,89,
-            127,236,117,99,54,90,57,11,21,62,82,25,267,75,111,76,56,20,2,61,80,78,133,
-            33,421,58,107,92,68,13,113,35,98,102,27,14,15,72,37,16,50,134,223,163,91,44,17,
-            412,18,48,23,4,29,77,6,110,67,45,161,254,112,8,106,19,101,5,157,83,154,238,115,26,143 );
+//        $param = array( 266,103,84,12,32,34,1,22,136,268,432,53,63,201,51,164,69,31,
+//            42,122,131,119,36,245,60,28,81,9,114,105,3,41,86,150,79,104,120,74,420,
+//            39,427,40,59,24,126,202,222,429,43,30,38,55,10,85,121,203,240,96,7,64,89,
+//            127,236,117,99,54,90,57,11,21,62,82,25,267,75,111,76,56,20,2,61,80,78,133,
+//            33,421,58,107,92,68,13,113,35,98,102,27,14,15,72,37,16,50,134,223,163,91,44,17,
+//            412,18,48,23,4,29,77,6,110,67,45,161,254,112,8,106,19,101,5,157,83,154,238,115,26,143 );
         //$param = array_slice($param,0,10);
+        //$this->checkParam($param);
+        
+        
+        //NEW PARAM
+        $param = $this->allChampionIdAvailable(TRUE);
         $this->checkParam($param);
+        
+        
 
 
 
@@ -84,7 +93,7 @@ class ImageRetrever extends CI_Controller {
                         //$this->SF->prh($result);
 
 
-                        $statSrcPart                    = "http://ddragon.leagueoflegends.com/cdn/7.3.1/img/champion/";
+                        $statSrcPart                    = "http://ddragon.leagueoflegends.com/cdn/".self::$CDNversion."/img/champion/";
                         ///req data: URL, Alt, Class, data-params
                         $returnData[$value]["url"]      = $statSrcPart . $result["image"]["full"];
                         $returnData[$value]["filename"] = $result["image"]["full"];
@@ -153,6 +162,43 @@ class ImageRetrever extends CI_Controller {
                 break;
         }
     }
+    
+    private function extract_onlyID ($input_array){
+        
+        $return_ID_array = array();
+        //$this->SF->prh($input_array['champions']);
+        
+        foreach ($input_array['champions'] as $key => $value) {
+            if($value['active'] == 'true'){
+                $return_ID_array[] = $value['id'];
+            
+            };
+             //$this->SF->prh($value);
+            
+        }
+        //asort($return_ID_array);
+        return $return_ID_array;
+    }
+
+    
+
+    public function allChampionIdAvailable( $return_data = false  ) {
+        
+        //  URL: /lol/platform/v3/champions
+        $allData = $this->RAH->getAllSummonerIdAvailable();
+        $clean_data = $this->extract_onlyID($allData);
+        
+        if($return_data){
+            return $clean_data;
+            
+        } else {
+            $this->SF->prh($clean_data);
+        }
+        
+        
+        
+    }
+    
 
     public function checkParam($param) {
 
