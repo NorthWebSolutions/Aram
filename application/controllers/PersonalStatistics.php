@@ -12,6 +12,22 @@ class PersonalStatistics extends CI_Controller {
         $this->load->model('aram_model');
     }
 
+    public function ChampionStatistics() {
+        $data['title'] = "Champion Stat - Personal Statistics GUI 0.2";
+
+        $data['MWC'] = $this->MWC(false);
+
+        $this->load->view('/templates/header',$data);
+
+        $this->load->view('/templates/start_content',$data);
+        $this->load->view('/templates/normal_navbar',$data);
+
+        $this->load->view('/personalstatistics/champions',$data);
+
+        $this->load->view('/templates/stop_content',$data);
+        $this->load->view('/templates/footer',$data);
+    }
+
     public function overview() {
 
         if ( $this->session->flashdata('msg') ) {
@@ -20,7 +36,7 @@ class PersonalStatistics extends CI_Controller {
 
         //$this->SF->prh($_SESSION);
         //$personal_id = $this->RAH->getSummonerIdBySummonerName("");
-        $data['title'] = "Personal Statistics GUI 0.2";
+        $data['title'] = "Overview - Personal Statistics GUI 0.2";
 
         $data['DataBaseData'] = $this->aram_model->getAllAramStatForUser($this->session->summonerid);
 
@@ -38,12 +54,12 @@ class PersonalStatistics extends CI_Controller {
             $mvc_data = $this->MWC(5);
 
             //$this->SF->prh($data['DataBaseData']);
-            
-          
-            
+
+
+
             $totalMach = count($data['DataBaseData']);
 
-            $winsAllFromDB = 0;
+            $winsAllFromDB  = 0;
             $losesAllFromDB = 0;
 
 
@@ -52,7 +68,7 @@ class PersonalStatistics extends CI_Controller {
 
 
             foreach ($data['DataBaseData'] as $key => $value) {
-                if ($value["gameIsWin"]) {
+                if ( $value["gameIsWin"] ) {
                     $winsAllFromDB++;
                 } else {
                     $losesAllFromDB++;
@@ -61,11 +77,11 @@ class PersonalStatistics extends CI_Controller {
 
 
 
-$winPercent_num = ($winsAllFromDB / $totalMach ) *100 ;
+            $winPercent_num = ($winsAllFromDB / $totalMach ) * 100;
 
-$winPercent = round( $winPercent_num , 1, PHP_ROUND_HALF_UP);
+            $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
 
-            
+
 
             $data["MVC_data"] = $mvc_data; // $mvc_data;
 
@@ -139,9 +155,13 @@ $winPercent = round( $winPercent_num , 1, PHP_ROUND_HALF_UP);
         }
 
         //$this->SF->prh($ordered_champs);
-        $newArray = array_slice($ordered_champs,0,$slice,true);
+        if ( $slice == FALSE ) {
+            return $ordered_champs;
+        } else {
+            $newArray = array_slice($ordered_champs,0,$slice,true);
+            return $newArray;
+        }
         //this->SF->prh($newArray);
-        return $newArray;
     }
 
 }

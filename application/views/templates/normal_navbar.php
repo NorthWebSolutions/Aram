@@ -26,6 +26,7 @@
                     
                               
                               ?>
+            <li><a href="/PersonalStatistics/ChampionStatistics">Champions</a></li>
           <li><a href="/">Home</a></li>
           <li><a href="/login/logout">Logout</a></li>
         </ul>

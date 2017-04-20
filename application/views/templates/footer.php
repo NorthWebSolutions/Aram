@@ -8,7 +8,8 @@
       </div>
       <div class="col-md-6">
         <ul class="bottom_ul">
-          <li><a href="http://northweb.co.uk">NorthWeb.co.uk</a></li>
+            <li><a href="https://github.com/NorthWebSolutions/Aram" target="_blank">GITHUB</a></li>
+            <li><a href="http://northweb.co.uk" target="_blank">NorthWeb.co.uk</a></li>
           <li><a href="https://github.com/NorthWebSolutions/Aram/issues" target="_blank">Report issue</a></li>
           
           <!--        <li><a href="">Contact us</a></li>-->
