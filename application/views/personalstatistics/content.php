@@ -44,7 +44,7 @@ $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
     <table class="table stat_panel ">
       <thead>
       <th>&nbsp;</th>
-        <th>Champion</th>
+<!--        <th class="text-center">Champion</th>-->
         <th class="text-center" >K/D/A <br />
           <small>Creeps</small> </th>
         <th class="text-center">Damage Dealt<br />
@@ -102,10 +102,10 @@ foreach ($DataBaseData as $key => $value) {
 
 
 
-        $img_opt                    = array( 'class' => "img img-circle champ-icon sml" );
+        //$img_opt                    = array( 'class' => "img img-circle champ-icon sml" );
         $championImageData["url"]   = IMG_path . "/championicons/id/$champId.png";
         $championImageData["alt"]   = $championName;
-        $championImageData["class"] = "img img-circle champ-icon sml center-block";
+        $championImageData["class"] = "img img-circle champ-icon md center-block";
         $championIMG                = $this->SR->imgWrapper($championImageData);
     }
 
@@ -114,12 +114,16 @@ foreach ($DataBaseData as $key => $value) {
     } else {
         echo "<tr class=\"warning\">";
     }
-    echo "<td  class=\"status_color\">$championIMG</td>";
+    
+    
 
 
 
     if ( $value["championArray"] != Null ) {
-        echo "<td>$championName <small><br>$championTitle</small></td>";
+        $content = "$championName <small><br>$championTitle</small>";
+       //data-toggle=\"popover\" data-trigger=\"focus\" data-content=\"$content\"
+        echo "<td><a role=\"button\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"left\" data-content=\"$content\" data-html=\"true\" >$championIMG</td>";
+        //echo "<td>$championName <small><br>$championTitle</small></td>";
     } else {
         echo "<td>$championID</td>";
     }
