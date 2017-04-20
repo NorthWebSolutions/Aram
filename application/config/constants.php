@@ -87,7 +87,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 defined('CSS_path')      OR define('CSS_path', "/application/assets/css/"); //CONSTANS CSS loading path
 defined('IMG_path')      OR define('IMG_path', "/application/assets/images/"); //CONSTANS Images loading path
 defined('IMG_path_absolute')      OR define('IMG_path_absolute', APPPATH."/assets/images/"); //CONSTANS Images loading path
-defined('JS_path')      OR define('JS_path', "/application/assets/JS/"); //CONSTANS Images loading path
+defined('JS_path')      OR define('JS_path', "/application/assets/js/"); //CONSTANS Images loading path
 
 defined('img_champ_lib')        OR define('img_champ_lib', IMG_path_absolute."championicons/");
 defined('img_champ_id')         OR define('img_champ_id', img_champ_lib."id/"); 

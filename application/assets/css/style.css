@@ -127,11 +127,20 @@ div.stat_panel {
 div.panel.panel-default {
 	background: transparent;
 }
-div.panel.panel-default table.table.stat_panel * {
+div.panel.panel-default table.table.stat_panel  {
 	background: transparent;
 	border-top-color: #785a28;
 	border-bottom-color: #785a28;
 	color: #f0e6d2;
+}
+
+.table > tbody > tr > td{ border-color:#785a28; }
+.table > thead > tr > th{ border-color:#785a28; }
+hr{border-color:#785a28;}
+
+table.table.stat_panel thead th:first-child  {
+	width:20px;
+
 }
 div.panel.panel-default table.table.stat_panel small {
 	font-size: xx-small;
@@ -159,6 +168,9 @@ div.panel.panel-default table.table.stat_panel tr.warning td.status_color {
 
 
 }
+.champ-icon.md{max-height: 60px;}
+
+
 /* FOOTER */
 .copyright {
 	min-height: 40px;
@@ -192,3 +204,8 @@ div.panel.panel-default table.table.stat_panel tr.warning td.status_color {
 }
 
 .champText {color:#FFF; margin:10px 0px 0px 0px; max-height:80px;}
+
+
+.popover{background-color: rgba(0,0,0,0.8);
+border: 1px solid #785a28;
+}
