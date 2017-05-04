@@ -10,11 +10,11 @@
       <?php echo form_open('login/userLogin'); ?>
       <div class="form-group">
         <label for="username" class="sr-only">Email address</label>
-        <input type="text" class="form-control" id="email" name="email" placeholder="Your email address">
+        <input type="text" class="form-control" id="email" name="email" placeholder="Your email address or use demo">
       </div>
       <div class="form-group">
         <label for="password" class="sr-only">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password or demo pw: demo00">
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-default">Login</button>
