@@ -23,7 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://lol.northweb.co.uk/';
+$config['base_url'] = 'http://lol.northweb.co.uk/';         /// Development site
+//$config['base_url'] = 'http://aram.northweb.co.uk/';    /// PUBLIC BETA SITE
 
 /*
 |--------------------------------------------------------------------------
