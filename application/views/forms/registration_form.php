@@ -1,5 +1,7 @@
-
-<div class="col-md-4">
+<?php //$this->SF->prh($SERVERS_list);
+ //sort($SERVERS_list);
+          ?>
+<div class="col-md-6">
   <div class="panel panel-default">
     <div class="panel-heading">Registration</div>
     <div class="panel-body"> <?php echo form_open('registration/addnewsummoner'); ?>
@@ -7,10 +9,9 @@
         <div class="row">
           <div class="col-xs-4">
             <h5 class="sr-only">select server:</h5>
-            <select class="form-control" name="server" >
-              <option value="eune">eune</option>
-              <option value="euw">euw</option>
-            </select>
+            <?php  echo form_dropdown('server', unserialize(SRV_LIST), 'euw', "class='form-control'")?>
+            
+
           </div>
           <div class="col-xs-8">
             <h5 class="sr-only">Your Summoner Name</h5>

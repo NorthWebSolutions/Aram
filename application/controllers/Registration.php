@@ -25,8 +25,10 @@ class Registration extends CI_Controller {
 
 
         $this->load->helper('form');
-        $this->load->library(array( 'Dns' => 'DNS' ));
+        $this->load->library(array( 'Dns' => 'DNS'));
 
+        
+        $data['SERVERS_list']   = unserialize (SRV_LIST);
         $data['title'] = "Registration";
         //$data['crypted_str'] = $this->DNS->crypt_pass('YedQ?!E>E2HLX`NF');
 

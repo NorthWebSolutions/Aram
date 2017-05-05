@@ -93,7 +93,21 @@ defined('img_champ_lib')        OR define('img_champ_lib', IMG_path_absolute."ch
 defined('img_champ_id')         OR define('img_champ_id', img_champ_lib."id/"); 
 defined('img_champ_name')       OR define('img_champ_name', img_champ_lib."name/"); 
 
-
+/* Szervers list: */
+defined('SRV_LIST')       OR define('SRV_LIST', serialize ( 
+            array(
+                "br" => "Brazil", 
+                "eune" => "EU Nordic &amp; East", 
+                "euw" => "EU West", 
+                "jp" => "Japan", 
+                "kr" => "Republic of Korea", 
+                "lan" => "Latin America North", 
+                "las" => "Latin America South", 
+                "na" => "North America", 
+                "oce" => "Oceania", 
+                "ru" => "Russia", 
+                "tr" => "Turkey"
+                ))); 
 
 
 
