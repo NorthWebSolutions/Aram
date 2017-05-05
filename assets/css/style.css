@@ -218,3 +218,24 @@ border: 1px solid #785a28;
 background-size: cover;
  border-radius: 0px 0px 60px 60px;
 }
+
+/*DATA TABLES CORRECTION*/
+table.dataTable tbody tr{background: transparent;}
+.dataTables_empty {color: red;}
+#main_champ_table_length label {white-space: nowrap; color: #785a28; margin-left: 15px;}
+#main_champ_table_filter label {white-space: nowrap; color: #785a28;}
+#main_champ_table_length label select, #main_champ_table_filter label input {
+    border: solid; 
+    background: rgba(0, 0,0, 0.4);
+    border-radius: 10px 0px 10px 0px;
+    margin: 5px;
+    padding: 3px 10px;
+    display: inline-block}
+
+#main_champ_table_info {color: #785a28; margin-left: 15px; margin-top: 5px;}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {background: #785a28; color: #FFF !important;  margin: 5px;  border-radius: 5px;}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {background:#095888 ; color: #FFF; }
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {font-weight: 700; }
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled {border: 1px solid #785a28; color: #785a28 !important; }
+.version {color: #d79922;}

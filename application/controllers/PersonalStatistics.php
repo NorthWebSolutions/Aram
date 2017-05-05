@@ -13,7 +13,7 @@ class PersonalStatistics extends CI_Controller {
     }
 
     public function ChampionStatistics() {
-        $data['title'] = "Champion Stat - Personal Statistics GUI 0.2";
+        $data['title'] = "Champions statistics";
 
         $data['MWC'] = $this->MWC(false);
 
@@ -36,7 +36,7 @@ class PersonalStatistics extends CI_Controller {
 
         //$this->SF->prh($_SESSION);
         //$personal_id = $this->RAH->getSummonerIdBySummonerName("");
-        $data['title'] = "Overview - Personal Statistics GUI 0.2";
+        $data['title'] = "Aram Statistics Overview";
 
         $data['DataBaseData'] = $this->aram_model->getAllAramStatForUser($this->session->summonerid);
 

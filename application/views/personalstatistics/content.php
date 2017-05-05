@@ -41,10 +41,10 @@ $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
           
       </div>
     </div>
-    <table class="table stat_panel ">
+      <table class="table stat_panel " id="main_champ_table">
       <thead>
-      <th>&nbsp;</th>
-<!--        <th class="text-center">Champion</th>-->
+      
+        <th class="text-center">Champion</th>
         <th class="text-center" >K/D/A <br />
           <small>Creeps</small> </th>
         <th class="text-center">Damage Dealt<br />
@@ -55,6 +55,7 @@ $winPercent = round($winPercent_num,1,PHP_ROUND_HALF_UP);
           <small>not-spent</small></th>
         <th class="text-center">IP <small>earned</small><br/>
           <small>Game Time</small></th>
+        <th >Date</th>
           </thead>
       <tbody>
         <?php
@@ -114,15 +115,17 @@ foreach ($DataBaseData as $key => $value) {
     } else {
         echo "<tr class=\"warning\">";
     }
-    
-    
+
+    $epoch = substr($createDate, 0, 10);
+$dt = new DateTime("@$epoch");
 
 
 
     if ( $value["championArray"] != Null ) {
         $content = "$championName <small><br>$championTitle</small>";
        //data-toggle=\"popover\" data-trigger=\"focus\" data-content=\"$content\"
-        echo "<td><a role=\"button\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"left\" data-content=\"$content\" data-html=\"true\" >$championIMG</td>";
+        echo "<td><span class=\"sr-only\">$championName</span>"
+        . "<a role=\"button\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"left\" data-content=\"$content\" data-html=\"true\" >$championIMG</td>";
         //echo "<td>$championName <small><br>$championTitle</small></td>";
     } else {
         echo "<td>$championID</td>";
@@ -133,7 +136,11 @@ echo "<td class=\"text-center\">$kills/$numDeaths/$assists<br>$minionsKilled</td
                                     echo "<td class=\"text-center\"> $goldEarned <br> $goldDef </td>";
                                     echo "<td class=\"text-center\"> $ipEarned <br> $time </td>";
 
-}
+//display date to sort by date
+echo "<td class=\"text-center small \">".$dt->format('Y-m-d')."<br>".$dt->format('H:i:s')."</td>";
+                                    
+    }
+
 
 ?>
           </tr>

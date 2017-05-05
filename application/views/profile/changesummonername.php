@@ -13,9 +13,7 @@
       <?php echo form_open('profile/changeSummonerName'); ?>
       <div class="form-group">
         <h5 class="sr-only">select server:</h5>
-        <select class="form-control" name="server" >
-          <option>eune
-        </select>
+<?php  echo form_dropdown('server', unserialize(SRV_LIST), 'euw', "class='form-control'")?>
         </select>
       </div>
       <div class="form-group">

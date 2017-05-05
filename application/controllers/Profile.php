@@ -44,7 +44,7 @@ class Profile extends CI_Controller {
             //// return becouse something is missing or not good
             Profile::$form_vail_error_bool = TRUE;
             
-            
+
             $data['title']                 = "Some data is missing..";
 
             $this->load->view('/templates/header',$data);
@@ -53,7 +53,7 @@ class Profile extends CI_Controller {
             $this->load->view('/templates/normal_navbar',$data);
 
             ///CONTENT
-            $this->load->view('/profile/changesummonername');
+            $this->load->view('/profile/changesummonername',$data);
 
             $this->load->view('/templates/stop_content',$data);
             $this->load->view('/templates/footer',$data);
