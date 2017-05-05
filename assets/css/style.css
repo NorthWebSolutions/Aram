@@ -238,3 +238,4 @@ table.dataTable tbody tr{background: transparent;}
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {background:#095888 ; color: #FFF; }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {font-weight: 700; }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {border: 1px solid #785a28; color: #785a28 !important; }
+.version {color: #d79922;}

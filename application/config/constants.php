@@ -93,6 +93,11 @@ defined('img_champ_lib')        OR define('img_champ_lib', IMG_path_absolute."ch
 defined('img_champ_id')         OR define('img_champ_id', img_champ_lib."id/"); 
 defined('img_champ_name')       OR define('img_champ_name', img_champ_lib."name/"); 
 
+/* Version list: */
+defined('VERSION_gui')       OR define('VERSION_gui', '0.3' ); 
+defined('VERSION_application')       OR define('VERSION_application', '0.9' );
+
+
 /* Szervers list: */
 defined('SRV_LIST')       OR define('SRV_LIST', serialize ( 
             array(
