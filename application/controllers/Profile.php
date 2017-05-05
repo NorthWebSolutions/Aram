@@ -44,7 +44,7 @@ class Profile extends CI_Controller {
             //// return becouse something is missing or not good
             Profile::$form_vail_error_bool = TRUE;
             
-            $data['SERVERS_list']   = $this->AC::$locations;
+
             $data['title']                 = "Some data is missing..";
 
             $this->load->view('/templates/header',$data);
