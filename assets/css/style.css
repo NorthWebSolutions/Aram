@@ -239,3 +239,17 @@ table.dataTable tbody tr{background: transparent;}
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {font-weight: 700; }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {border: 1px solid #785a28; color: #785a28 !important; }
 .version {color: #d79922;}
+
+
+
+
+/* Small devices (tablets, 768px and up) 
+@media (min-width: @screen-sm-min) {
+.bottom_ul{}
+}
+
+ Medium devices (desktops, 992px and up) 
+@media (min-width: @screen-md-min) { }
+
+ Large devices (large desktops, 1200px and up) 
+@media (min-width: @screen-lg-min) {  }*/

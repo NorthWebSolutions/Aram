@@ -3,10 +3,10 @@
 <footer class="footer">
   <div class="copyright">
     <div class="container">
-      <div class="col-md-6">
+      <div class="col-xs-12 col-sm-12 col-md-6">
         <p>© 2017 - All Rights reserved for NorthWebSolutions LTD. & RIOT GAMES INC.</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-xs-12 col-sm-12 col-md-6 ">
         <ul class="bottom_ul">
             <li class="version">APP: <?php echo VERSION_application ?> | GUI: <?php echo VERSION_gui ?> </li>
             <li><a href="https://github.com/NorthWebSolutions/Aram" target="_blank">GITHUB</a></li>

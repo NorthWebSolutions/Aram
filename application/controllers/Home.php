@@ -24,12 +24,7 @@ class Home extends CI_Controller
         
         
         
-        
-//        $this->load->helper('Url');
-//        $this->load->library(array(
-//            'Dns' => 'DNS'
-//        ));
-        //$this->load->helper('form');
+//$this->SF->prh($_SESSION);
         
         
         //////////// redirects
@@ -57,6 +52,8 @@ class Home extends CI_Controller
             
         if(isset($summonerID["status"]["status_code"]) && $summonerID["status"]["status_code"] == "404"){
             redirect("Profile/changeSummonerName");
+        }else{
+    //$this->SF->prh($summonerID);
         }
         
             
