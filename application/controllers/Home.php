@@ -52,7 +52,9 @@ class Home extends CI_Controller
             
         if(isset($summonerID["status"]["status_code"]) && $summonerID["status"]["status_code"] == "404"){
             redirect("Profile/changeSummonerName");
-        }elseif( $summonerID["status"]["status_code"] != "200"){
+        }elseif(isset($summonerID["status"]["status_code"]) && $summonerID["status"]["status_code"] != "200"){
+            
+            
             $this->SF->prh("Please report this issue at https://github.com/NorthWebSolutions/Aram/issues and please paste the following:");
             $this->SF->prh($_SESSION);
             $this->SF->prh($summonerID["status"]["status_code"]);
