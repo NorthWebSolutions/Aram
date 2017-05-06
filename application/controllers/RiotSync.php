@@ -69,6 +69,10 @@ class RiotSync extends CI_Controller {
         
 //        $users_list[0]["username"] = "$username";
 //        $users_list[0]["server"] = "$server";
+        
+    }elseif ($username == "test" && $server == FALSE){
+        $users_list             = $this->users_model->returnOnlyUsernames(); 
+        $sw_exit_rout = 3;
     }else{
         $users_list             = $this->users_model->returnOnlyUsernames(); 
         $sw_exit_rout = 2;
@@ -107,9 +111,39 @@ class RiotSync extends CI_Controller {
        
         $final_filter_and_store = $this->filter_and_store($api_request);
         $this->SF->prn("---------------------- FINAL UPDATE TABLE ----------------------");
-        $this->SF->prn($this->updated_rows_c);
-                echo 'case2-ended-';
+        $this->SF->prn("Uploaded rows in total: ".$this->updated_rows_c);
+        $this->SF->prn("R2 - Finished whitout errors");
                 break;
+            case 3:
+                
+        //this is the AUTOSYNC _TEST
+                
+        $this->SW_show_not_aram_game = true;
+    $this->SW_show_not_aram_game       = true;
+    $this->SW_show_stored_aram_game    = true;
+    $this->SW_show_user_list           = true;
+    $this->SW_show_user_error          = true;
+    $this->SW_show_user_process        = true;
+    $this->SW_show_user_processed_list = true;
+    $this->SW_show_updated             = true;
+                
+        $this->SF->prn("---------------------- Get users to check:".count($users_list)." ----------------------");
+        
+        $this->SF->prn("---------------------- Vaildate users and generate the correct api request list ----------------------");
+        $filtered_list          = $this->filter_users_list($users_list);
+        $this->SF->prn("---------------------- List for Api requests ready ----------------------");
+        //$this->SF->prn($filtered_list);
+        
+        $this->SF->prn("---------------------- request all API data what is nessesery ----------------------");
+        $api_request            = $this->RAH->getRecentBySummonerId($filtered_list);
+        
+        $this->SF->prn("---------------------- processing API data ----------------------");
+       
+        $final_filter_and_store = $this->filter_and_store($api_request);
+        $this->SF->prn("---------------------- FINAL UPDATE TABLE ----------------------");
+        $this->SF->prn("Uploaded rows in total: ".$this->updated_rows_c);
+        $this->SF->prn("R2 DEBUG - Finished whitout errors");
+                
 
             default:
                 break;
