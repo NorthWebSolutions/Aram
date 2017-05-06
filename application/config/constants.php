@@ -114,6 +114,7 @@ defined('SRV_LIST')       OR define('SRV_LIST', serialize (
                 "tr" => "Turkey"
                 ))); 
 
+defined('SRV_aLIST')       OR define('SRV_aLIST', serialize ( array("br", "eune", "euw", "jp", "kr", "lan", "las", "na", "oce", "ru", "tr"  ))); 
 
 
 
