@@ -102,7 +102,7 @@ class RiotSync extends CI_Controller {
         $this->SF->prn("---------------------- Vaildate users and generate the correct api request list ----------------------");
         $filtered_list          = $this->filter_users_list($users_list);
         $this->SF->prn("---------------------- List for Api requests ready ----------------------");
-        //$this->SF->prn($filtered_list);
+        $this->SF->prn($filtered_list);
         
         $this->SF->prn("---------------------- request all API data what is nessesery ----------------------");
         $api_request            = $this->RAH->getRecentBySummonerId($filtered_list);
@@ -126,7 +126,7 @@ class RiotSync extends CI_Controller {
     $this->SW_show_user_process        = true;
     $this->SW_show_user_processed_list = true;
     $this->SW_show_updated             = true;
-                
+                $this->SF->prn("R2 DEBUG");
         $this->SF->prn("---------------------- Get users to check:".count($users_list)." ----------------------");
         
         $this->SF->prn("---------------------- Vaildate users and generate the correct api request list ----------------------");
@@ -143,6 +143,7 @@ class RiotSync extends CI_Controller {
         $this->SF->prn("---------------------- FINAL UPDATE TABLE ----------------------");
         $this->SF->prn("Uploaded rows in total: ".$this->updated_rows_c);
         $this->SF->prn("R2 DEBUG - Finished whitout errors");
+        break;
                 
 
             default:
@@ -255,7 +256,7 @@ class RiotSync extends CI_Controller {
     }
 
     private function filter_users_list($users_list) {
-        /// this fn gona do an array re order to get a list what i need
+        /// generating formated and filtered list.
         
         $stat_total = count($users_list);
         $counter = 0;
@@ -276,7 +277,7 @@ class RiotSync extends CI_Controller {
             $search = array(" ");
             $replace = array("");
             $summ_sm      = str_replace($search, $replace,strtolower($summonerName));
-            //$this->SF->prn($summ_sm);
+            if ( $this->SW_show_user_process ) {$this->SF->prn($summ_sm);}
             $summonerData = $this->RAH->getSummonerIdBySummonerName($summ_sm,$row->server);
             $counter++;
             if ( $summonerData != FALSE && !isset($summonerData["status"]) ) {
