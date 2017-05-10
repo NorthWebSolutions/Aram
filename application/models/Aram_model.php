@@ -16,6 +16,21 @@ class Aram_model extends CI_Model {
     public function __construct() {
         parent::__construct();
     }
+    
+    
+    public function getAllChampionStat(){
+        
+                $this->db->from('aram_data_table');
+                $this->db->select('champion, statsArray');                                                                        
+        $this->db->group_by('gameID');
+       
+        
+        
+        $query = $this->db->get();
+        return $query->result();
+        
+        
+    }
 
     public function getAllAramStatForUser($summonerID) {
         
