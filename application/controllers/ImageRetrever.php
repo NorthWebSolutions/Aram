@@ -15,7 +15,7 @@ class ImageRetrever extends CI_Controller {
 
     //put your code here
 
-    private static $CDNversion = '7.8.1' ;
+    private static $CDNversion = '7.14.1' ;
     
 
     protected $RequestMainType;
